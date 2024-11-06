@@ -1,0 +1,78 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Camiseta Básica",
+      "foto": "https://example.com/camiseta.jpg",
+      "descricao": "Camiseta de algodão, disponível em várias cores."
+    },
+    {
+      "id": "2",
+      "nome": "Calça Jeans",
+      "foto": "https://example.com/calca.jpg",
+      "descricao": "Calça jeans confortável e estilosa."
+    },
+    {
+      "id": "0",
+      "nome": "Produto teste",
+      "foto": "AAAAAAAAAAA",
+      "descricao": "produto teste 1"
+    },
+    {
+      "id": "2871",
+      "nome": "AAAAAAAAAAAAAA TESTE",
+      "foto": "ASDNAPISFNAISFN",
+      "descricao": "PRODUTO TESTE AAAAAAAAAA"
+    },
+    {
+      "id": "e864",
+      "nome": "AAAAAAAAAAAAAA TESTE",
+      "foto": "ASDNAPISFNAISFN",
+      "descricao": "PRODUTO TESTE AAAAAAAAAA"
+    },
+    {
+      "id": "0812",
+      "nome": "AAAAAAAAAAAAAA TESTE",
+      "foto": "ASDNAPISFNAISFN",
+      "descricao": "PRODUTO TESTE AAAAAAAAAA"
+    },
+    {
+      "id": "17a6",
+      "nome": "AAAAAAAAAAAAAAAAasdipahsbdjabhsd",
+      "foto": "AAAAAAAAAAAAAAA",
+      "descricao": "ASÓDUBASDLHFBAUDSFHB"
+    }
+  ],
+  "anuncios": [
+    {
+      "id": "1",
+      "produtoId": 1,
+      "preco": 49.99,
+      "tamanho": "M"
+    },
+    {
+      "id": "2",
+      "produtoId": 1,
+      "preco": 49.99,
+      "tamanho": "G"
+    },
+    {
+      "id": "3",
+      "produtoId": 2,
+      "preco": 89.99,
+      "tamanho": "38"
+    },
+    {
+      "id": "0",
+      "produtoId": 0,
+      "preco": 10,
+      "tamanho": "M"
+    },
+    {
+      "id": "b444",
+      "produtoId": "17a6",
+      "preco": 10,
+      "tamanho": "G"
+    }
+  ]
+}
