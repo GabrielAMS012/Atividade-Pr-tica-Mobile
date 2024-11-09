@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../components/anuncio_card.dart';
-import '../components/confirmation_dialog_button.dart';
 import 'anuncio_form_screen.dart';
 import '../services/api_service.dart';
 import '../models/anuncio.dart';
 import '../models/produto.dart';
+import '../components/anuncio_card.dart'; // Importa o componente AnuncioCard
 
 class AnuncioListScreen extends StatefulWidget {
   @override
@@ -58,7 +57,7 @@ class _AnuncioListScreenState extends State<AnuncioListScreen> {
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
+          icon: Icon(Icons.arrow_back_ios_new, color: Colors.white), // Ícone correto
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -101,13 +100,8 @@ class _AnuncioListScreenState extends State<AnuncioListScreen> {
                         ),
                       ).then((_) => _refreshAnuncios());
                     },
-                    onDelete: () {
-                      ConfirmationDialogButton(
-                        title: 'Confirmar Deleção',
-                        message: 'Deseja realmente deletar este anúncio?',
-                        onConfirm: () => _deleteAnuncio(anuncio.id, produto.id),
-                      );
-                    },
+                    // Passa a função de deleção diretamente para o AnuncioCard
+                    onDelete: () => _deleteAnuncio(anuncio.id, produto.id),
                   );
                 },
               ),

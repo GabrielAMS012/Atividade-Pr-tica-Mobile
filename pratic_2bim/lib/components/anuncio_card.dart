@@ -94,7 +94,30 @@ class AnuncioCard extends StatelessWidget {
           left: 8,
           child: IconButton(
             icon: Icon(Icons.delete, color: Colors.red),
-            onPressed: onDelete,
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Confirmar Deleção'),
+                    content: Text('Deseja realmente deletar este anúncio?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text('Cancelar'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          onDelete();
+                        },
+                        child: Text('Deletar'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ),
       ],
