@@ -3,13 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
-import 'package:pratic_2bim/models/produto.dart';
-import 'package:pratic_2bim/models/anuncio.dart';
-import 'package:pratic_2bim/screens/anuncio_list_screen.dart';
-import 'package:pratic_2bim/services/api_service.dart';
 import 'dart:convert';
 
 import 'package:provider/provider.dart';
+import 'package:pratic_2bim/models/produto.dart';
+import 'package:pratic_2bim/models/anuncio.dart';
+import 'package:pratic_2bim/services/api_service.dart';
+import 'package:pratic_2bim/screens/anuncio_list_screen.dart';
 
 @GenerateMocks([http.Client, ApiService])
 import 'app_teste.mocks.dart';
@@ -26,7 +26,6 @@ void main() {
 
       final produto = Produto.fromJson(json);
 
-      // Verificações
       expect(produto.id, '1');
       expect(produto.nome, 'Camiseta Básica');
       expect(produto.foto, 'https://example.com/camiseta.jpg');
@@ -53,12 +52,12 @@ void main() {
   group('Teste com Mock HTTP', () {
     test('Deve filtrar anúncios com preço acima de 50', () async {
       final client = MockClient();
-      final apiService = ApiService();
+      final apiService = ApiService(client: client);
 
       when(client.get(Uri.parse('http://localhost:3000/anuncios')))
           .thenAnswer((_) async => http.Response(json.encode([
-        {'id': '1', 'produtoId': '1', 'preco': 60.00, 'tamanho': 'M'},
-        {'id': '2', 'produtoId': '2', 'preco': 45.00, 'tamanho': 'G'},
+        {'id': '1', 'produtoId': '1', 'preco': 60, 'tamanho': 'M'},
+        {'id': '2', 'produtoId': '2', 'preco': 45, 'tamanho': 'G'},
       ]), 200));
 
       when(client.get(Uri.parse('http://localhost:3000/produtos')))
@@ -70,10 +69,10 @@ void main() {
       final anuncios = await apiService.fetchAnunciosWithProdutos();
 
       final filteredAnuncios =
-      anuncios.where((anuncio) => anuncio['anuncio'].preco > 50.00).toList();
+      anuncios.where((anuncio) => anuncio['anuncio'].preco > 50).toList();
 
       expect(filteredAnuncios.length, 1);
-      expect(filteredAnuncios[0]['anuncio'].preco, 60.00);
+      expect(filteredAnuncios[0]['anuncio'].preco, 60);
     });
   });
 
@@ -83,10 +82,8 @@ void main() {
 
       when(mockApiService.fetchAnunciosWithProdutos()).thenAnswer((_) async => [
         {
-          'anuncio': Anuncio(
-              id: '1', produtoId: '1', preco: 60.0, tamanho: 'M'),
-          'produto': Produto(
-              id: '1', nome: 'Produto 1', foto: '', descricao: ''),
+          'anuncio': Anuncio(id: '1', produtoId: '1', preco: 60.0, tamanho: 'M'),
+          'produto': Produto(id: '1', nome: 'Produto 1', foto: '', descricao: ''),
         },
       ]);
 
@@ -97,8 +94,10 @@ void main() {
         ),
       );
 
+      // Aguarda para que os dados carreguem corretamente
       await tester.pumpAndSettle();
 
+      // Verifica se o widget exibe o conteúdo esperado
       expect(find.text('Produto 1'), findsOneWidget);
       expect(find.text('R\$ 60.0 - Tamanho: M'), findsOneWidget);
     });

@@ -1,12 +1,6 @@
 {
   "produtos": [
     {
-      "id": "1",
-      "nome": "Camiseta Básica",
-      "foto": "https://example.com/camiseta.jpg",
-      "descricao": "Camiseta de algodão, disponível em várias cores."
-    },
-    {
       "id": "2",
       "nome": "Calça Jeans",
       "foto": "https://example.com/calca.jpg",
@@ -44,18 +38,6 @@
     }
   ],
   "anuncios": [
-    {
-      "id": "1",
-      "produtoId": 1,
-      "preco": 49.99,
-      "tamanho": "M"
-    },
-    {
-      "id": "2",
-      "produtoId": 1,
-      "preco": 49.99,
-      "tamanho": "G"
-    },
     {
       "id": "3",
       "produtoId": 2,
